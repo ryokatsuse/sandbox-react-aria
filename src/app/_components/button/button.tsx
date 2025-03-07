@@ -1,16 +1,18 @@
 import React, { FC } from 'react';
-import {Button as AriaButton} from 'react-aria-components';
+import {
+  Button as AriaButton,
+  ButtonProps as AriaButtonProps,
+} from "react-aria-components";
 
-interface ButtonProps {
-  onPress?: () => void;
-  children: React.ReactNode;
-}
+/**
+ * example of a button component
+ * https://react-spectrum.adobe.com/react-aria/Button.html
+ */
 
-export const Button: FC<ButtonProps> = ({onPress, children}) => {
-  return (
-    <AriaButton onPress={onPress || (() => alert('Hello world!'))}>
-      {children}
-    </AriaButton>
-  );
-}
+// AriaButtonPropsを継承して独自のpropsを定義
+export interface ButtonProps extends AriaButtonProps {}
+
+export const Button: FC<ButtonProps> = (props) => {
+  return <AriaButton {...props}>{props.children}</AriaButton>;
+};
 
