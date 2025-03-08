@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React, { type FC } from "react";
 import {
   Button as AriaButton,
-  ButtonProps as AriaButtonProps,
+  type ButtonProps as AriaButtonProps,
 } from "react-aria-components";
-
+import styles from "./button.module.css";
 /**
  * example of a button component
  * https://react-spectrum.adobe.com/react-aria/Button.html
@@ -13,6 +13,9 @@ import {
 export interface ButtonProps extends AriaButtonProps {}
 
 export const Button: FC<ButtonProps> = (props) => {
-  return <AriaButton {...props}>{props.children}</AriaButton>;
+  return (
+    <AriaButton className={styles.root} {...props}>
+      {props.children}
+    </AriaButton>
+  );
 };
-
